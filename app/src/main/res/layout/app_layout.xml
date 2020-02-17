@@ -8,12 +8,11 @@
     android:orientation="horizontal"
     android:padding="4dp">
 
-    <ImageView
+    <com.facebook.drawee.view.SimpleDraweeView
         android:id="@+id/_appImage"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:foregroundGravity="left"
-        android:src="@drawable/ic_image_black_24dp"
+        app:layout_constraintDimensionRatio="9:16"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         />

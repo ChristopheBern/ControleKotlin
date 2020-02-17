@@ -1,11 +1,15 @@
 package com.example.controlekotlincbe.adapters
 
+import android.net.Uri
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.controlekotlincbe.R
 import com.example.controlekotlincbe.models.AppModel
+import com.facebook.drawee.view.SimpleDraweeView
+import kotlinx.android.synthetic.main.app_layout.view.*
 
 class AppListAdapter(val listOfApp: List<AppModel>) : RecyclerView.Adapter<AppListAdapter.AppViewHolder>() {
     override fun onCreateViewHolder(
@@ -29,7 +33,14 @@ class AppListAdapter(val listOfApp: List<AppModel>) : RecyclerView.Adapter<AppLi
 
     inner class AppViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
         fun bind(app: AppModel) {
-            // Todo
+            view._appTitle.text = app.nom
+            view._appGenre.text = app.genre
+            view._appDate.text = app.anneeSortie.toString()
+            val uri: Uri = Uri.parse(app.imageUrl)
+            val draweeView = view.findViewById(R.id._appImage) as SimpleDraweeView
+            draweeView.setImageURI(uri.toString())
+            Log.d("Debug", view._appImage.toString())
+
         }
     }
 
