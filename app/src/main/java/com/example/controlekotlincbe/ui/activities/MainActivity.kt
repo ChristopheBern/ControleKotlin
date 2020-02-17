@@ -1,7 +1,8 @@
-package com.example.controlekotlincbe
+package com.example.controlekotlincbe.ui.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.controlekotlincbe.R
 
 class MainActivity : AppCompatActivity() {
 
