@@ -6,7 +6,9 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:padding="6dp">
+    android:padding="6dp"
+    android:visibility="visible"
+    android:id="@+id/_itemApp">
 
     <com.facebook.drawee.view.SimpleDraweeView
         android:id="@+id/_appImage"

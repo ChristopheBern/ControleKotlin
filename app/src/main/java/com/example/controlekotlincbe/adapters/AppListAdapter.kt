@@ -1,7 +1,6 @@
 package com.example.controlekotlincbe.adapters
 
 import android.net.Uri
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,7 +10,9 @@ import com.example.controlekotlincbe.models.AppModel
 import com.facebook.drawee.view.SimpleDraweeView
 import kotlinx.android.synthetic.main.app_layout.view.*
 
-class AppListAdapter(val listOfApp: List<AppModel>) : RecyclerView.Adapter<AppListAdapter.AppViewHolder>() {
+typealias itemLongCliked = (AppModel) -> Unit
+
+class AppListAdapter(val listOfApp: MutableList<AppModel>) : RecyclerView.Adapter<AppListAdapter.AppViewHolder>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -28,18 +29,25 @@ class AppListAdapter(val listOfApp: List<AppModel>) : RecyclerView.Adapter<AppLi
     }
 
     override fun onBindViewHolder(holder: AppViewHolder, position: Int) {
-        holder.bind(listOfApp[position]);
+        holder.bind(listOfApp[position], longClickCallBack = {
+            val index: Int = listOfApp.indexOf(it)
+            listOfApp.removeAt(index)
+            notifyItemRemoved(index)
+        });
     }
 
     inner class AppViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
-        fun bind(app: AppModel) {
+        fun bind(app: AppModel, longClickCallBack: itemLongCliked) {
             view._appTitle.text = app.nom
             view._appGenre.text = app.genre
             view._appDate.text = app.anneeSortie.toString()
             val uri: Uri = Uri.parse(app.imageUrl)
             val draweeView = view.findViewById(R.id._appImage) as SimpleDraweeView
             draweeView.setImageURI(uri.toString())
-            Log.d("Debug", view._appImage.toString())
+            view.setOnClickListener() {
+                longClickCallBack.invoke(app)
+                true
+            }
 
         }
     }

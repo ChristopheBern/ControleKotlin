@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
         // Initialisation de la recycler view
         _recyclerView.apply {
             layoutManager = LinearLayoutManager(this@MainActivity)
-            adapter = AppListAdapter(LIST_OF_APPLICATIONS)
+            adapter = AppListAdapter(LIST_OF_APPLICATIONS.toMutableList())
         }
 
         // Evenement au clic sur bouton par genre
@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
             val appByGenre : List<AppModel> = LIST_OF_APPLICATIONS.sortedBy { it.genre }
             _recyclerView.apply {
                 layoutManager = LinearLayoutManager(this@MainActivity)
-                adapter = AppListAdapter(appByGenre)
+                adapter = AppListAdapter(appByGenre.toMutableList())
             }
             Log.d("Debug", appByGenre.toString())
         }
@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
             val appByDate : List<AppModel> = LIST_OF_APPLICATIONS.sortedBy { it.anneeSortie }
             _recyclerView.apply {
                 layoutManager = LinearLayoutManager(this@MainActivity)
-                adapter = AppListAdapter(appByDate)
+                adapter = AppListAdapter(appByDate.toMutableList())
             }
             Log.d("Debug", appByDate.toString())
         }
