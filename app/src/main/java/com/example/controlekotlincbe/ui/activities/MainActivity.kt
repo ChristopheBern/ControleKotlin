@@ -10,6 +10,7 @@ import com.example.controlekotlincbe.models.AppModel
 import com.example.gameapplication.utils.LIST_OF_APPLICATIONS
 import com.facebook.drawee.backends.pipeline.Fresco
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.coroutines.newFixedThreadPoolContext
 
 class MainActivity : AppCompatActivity() {
 
@@ -43,6 +44,11 @@ class MainActivity : AppCompatActivity() {
                 adapter = AppListAdapter(appByDate.toMutableList())
             }
             Log.d("Debug", appByDate.toString())
+        }
+
+        _search.setOnClickListener(){
+            // Todo
+//            startActivity(new Intent(this, ))
         }
     }
 }
