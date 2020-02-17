@@ -6,7 +6,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:padding="4dp">
+    android:padding="6dp">
 
     <com.facebook.drawee.view.SimpleDraweeView
         android:id="@+id/_appImage"
@@ -15,7 +15,8 @@
         app:layout_constraintDimensionRatio="9:16"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        />
+        app:roundedCornerRadius="4dp"
+        android:layout_marginRight="10dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -23,6 +24,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:orientation="vertical"
+        android:layout_marginLeft="5dp"
         app:layout_constraintBottom_toBottomOf="@id/_appImage"
         app:layout_constraintStart_toEndOf="@id/_appImage">
         <TextView
